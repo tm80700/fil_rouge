@@ -25,7 +25,7 @@ public class UtilisateurDao {
 	public void ajoutUtilisateur(Utilisateur util) {
 
 		/*
-		 * methode pour ajouter un nouveau client
+		 * methode pour ajouter un nouveau utilisateur
 		 * 
 		 * 
 		 */

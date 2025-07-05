@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Utilisateur {
 	
 	
-	private int id_Utilisateur;
+	private int idUtilisateur;
 	private String nom_Utilisateur;
 	private String prenomUtilisateur;
 	private String adresseUtilisateur;
@@ -42,13 +42,13 @@ public class Utilisateur {
 
 
 	public int getId_Utilisateur() {
-		return id_Utilisateur;
+		return idUtilisateur;
 	}
 
 
 
 	public void setId_Utilisateur(int id_Utilisateur) {
-		this.id_Utilisateur = id_Utilisateur;
+		this.idUtilisateur = id_Utilisateur;
 	}
 
 
@@ -175,7 +175,7 @@ public class Utilisateur {
 
 	@Override
 	public String toString() {
-		return "Utilisateur [id_Utilisateur=" + id_Utilisateur + ", nom_Utilisateur=" + nom_Utilisateur
+		return "Utilisateur [id_Utilisateur=" + idUtilisateur + ", nom_Utilisateur=" + nom_Utilisateur
 				+ ", prenomUtilisateur=" + prenomUtilisateur + ", adresseUtilisateur=" + adresseUtilisateur
 				+ ", codePostalUtilisateur=" + codePostalUtilisateur + ", villeUtilisateur=" + villeUtilisateur
 				+ ", paysUtilisateur=" + paysUtilisateur + ", motPasseUtilisateur=" + motPasseUtilisateur
