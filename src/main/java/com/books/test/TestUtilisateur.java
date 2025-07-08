@@ -6,10 +6,11 @@ import com.books.dao.UtilisateurDao;
 import com.books.entity.Utilisateur;
 
 public class TestUtilisateur {
+	
+	
 
-	public static void main(String[] args) {
-		
-		
+	public static void ajout() {
+	
 		
 		UtilisateurDao agentUtilisateurDao = new UtilisateurDao();
 		

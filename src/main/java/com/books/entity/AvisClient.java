@@ -21,7 +21,8 @@ public class AvisClient {
 	public AvisClient(Date dateAvisClient, String titreAvisClient, String commentaireAvisClient, int noteAvisClient, int idUtilisateur,
 			int idLivre) {
 
-		this.setDateAvisClient(dateAvisClient);;
+		this.setDateAvisClient(dateAvisClient);
+		this.setTitreAvisClient(titreAvisClient);
 		this.setCommentaireAvisClient(commentaireAvisClient);;
 		this.setNoteAvisClient(noteAvisClient);;
 		this.setIdUtilisateur(idUtilisateur);;

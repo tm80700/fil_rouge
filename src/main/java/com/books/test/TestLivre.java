@@ -7,9 +7,11 @@ import com.books.entity.Livre;
 
 public class TestLivre {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
+	
+	public static void ajout() {
 		
+	
 		
 		LivreDao agentLivreDao = new LivreDao();
 		
@@ -37,21 +39,13 @@ public class TestLivre {
 		agentLivreDao.ajoutLivre(livre1);
 		
 		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 	}
+	
+
+	
+	
+		
+
+	
 
 }

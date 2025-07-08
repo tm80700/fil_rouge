@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.books.entity.Livre;
 import com.books.entity.Utilisateur;
 
 public class UtilisateurDao {
@@ -72,5 +73,120 @@ public class UtilisateurDao {
 	}
 
 	// -------------------------------------------------------------------------------
+	
+	  public void supprimerUtilisateur(Utilisateur cl) {
+			
+			/*
+			 *  methode pour supprimer un utilisateur
+			 * 
+			 * 
+			 */
+			
+			sql = "DELETE FROM utilisateur where idUtilisateur = ?;";
+			
+			//ClientDao cl = null;
+			
+			try {
+				ps = cnx.prepareStatement(sql);
+				
+				ps.setInt(1, cl.getId_Utilisateur());
+				
+				
+				
+				int rs = ps.executeUpdate();
+				
+				System.out.println("Utilisateur supprimé : " + rs);
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	        
+    
+	    	//-------------------------------------------------------------------------------
+	  
+	  
+		public Utilisateur rechercheParId(int id) {
+
+			// création de la requete sql qui correspond à la méthode
+			sql = "select * from Utilisateur WHERE idUtilisateur = ?;";
+
+			Utilisateur util = null;
+
+			try {
+
+				// préparation de la request sql pour avoir un sens en java
+				ps = cnx.prepareStatement(sql);
+
+				ps.setInt(1, id);
+
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+
+					util = new Utilisateur();
+	                
+				 	util.setId_Utilisateur(rs.getInt(1));
+				 	
+					util.setNom_Utilisateur(rs.getString(2));
+					
+					util.setPrenomUtilisateur(rs.getString(3));
+					
+					util.setAdresseUtilisateur(rs.getString(4));
+					
+					util.setCodePostalUtilisateur(rs.getInt(5));
+					
+					util.setVilleUtilisateur(rs.getString(6));
+					
+					util.setPaysUtilisateur(rs.getString(7));
+					
+					util.setMotPasseUtilisateur(rs.getString(8));
+					
+					util.setEmailUtilisateur(rs.getString(9));
+					
+					util.setRoleUtilisateur(rs.getString(10));
+					
+					util.setDateCreationUtilisateur(rs.getDate(11));
+					
+			
+
+				} else {
+					System.out.println("Aucun utilisateur ne correspond au numero : " + id);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return util;
+
+		}
+
+	  
+	  
+	  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

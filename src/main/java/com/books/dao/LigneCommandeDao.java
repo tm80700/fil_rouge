@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.books.entity.AvisClient;
+import com.books.entity.LigneCommande;
 
-public class AvisClientDao {
+public class LigneCommandeDao {
 	
 	private Connection cnx = null;
 
@@ -17,13 +17,13 @@ public class AvisClientDao {
 
 	ResultSet rs = null;
 
-	public AvisClientDao() {
+	public LigneCommandeDao() {
 		
 		cnx = new ConnectorMysql().getCnx();
 	}
 	
 	
-	public void ajoutAvisClient(AvisClient av) {
+	public void ajoutLigneCommande(LigneCommande lcm) {
 
 		/*
 		 * methode pour ajouter un nouveau Livre
@@ -31,30 +31,25 @@ public class AvisClientDao {
 		 * 
 		 */
 
-		sql = "INSERT INTO AvisClient(dateAvisClient, titreAvisClient, commentaireAvisClient, noteAvisClient, idUtilisateur, idLivre"
-				+ ") VALUES (?,?,?,?,?,?);";
+		sql = "INSERT INTO ligneCommande(idCommande, idLivre, quantiteLigneCommande, prixUnitaireLivre"
+				+ ") VALUES (?,?,?,?);";
 
 		// ClientDao cl = null;
 
 		try {
 			ps = cnx.prepareStatement(sql);
 
-			ps.setDate(1, av.getDateAvisClient());
+			ps.setInt(1, lcm.getIdCommande());
 			
-			ps.setString(2, av.getTitreAvisClient());
+			ps.setInt(2, lcm.getIdLivre());
 			
-			ps.setString(3, av.getCommentaireAvisClient());
+			ps.setInt(3, lcm.getQuantiteLigneCommande());
 			
-			ps.setInt(4, av.getNoteAvisClient());
-			
-			ps.setInt(5, av.getIdUtilisateur());
-			
-			ps.setInt(6, av.getIdLivre());
-		
+			ps.setFloat(4, lcm.getPrixUnitaireLivre());
 
 			int rs = ps.executeUpdate();
 
-			System.out.println("Avis client ajouté : " + rs);
+			System.out.println("Ligne commande ajoutée : " + rs);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -64,11 +59,6 @@ public class AvisClientDao {
 	}
 
 	// -------------------------------------------------------------------------------
-	
-	
-	
-	
-	
 	
 	
 	

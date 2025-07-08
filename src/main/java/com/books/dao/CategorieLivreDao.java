@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.books.entity.AvisClient;
+import com.books.entity.CategorieLivre;
 
-public class AvisClientDao {
+public class CategorieLivreDao {
 	
 	private Connection cnx = null;
 
@@ -17,13 +17,14 @@ public class AvisClientDao {
 
 	ResultSet rs = null;
 
-	public AvisClientDao() {
+	public CategorieLivreDao() {
 		
 		cnx = new ConnectorMysql().getCnx();
 	}
 	
 	
-	public void ajoutAvisClient(AvisClient av) {
+	
+	public void ajout(CategorieLivre ctl) {
 
 		/*
 		 * methode pour ajouter un nouveau Livre
@@ -31,30 +32,23 @@ public class AvisClientDao {
 		 * 
 		 */
 
-		sql = "INSERT INTO AvisClient(dateAvisClient, titreAvisClient, commentaireAvisClient, noteAvisClient, idUtilisateur, idLivre"
-				+ ") VALUES (?,?,?,?,?,?);";
+		sql = "INSERT INTO CategorieLivre(idLivre, idCategorie ) VALUES (?,?);";
 
 		// ClientDao cl = null;
 
 		try {
 			ps = cnx.prepareStatement(sql);
 
-			ps.setDate(1, av.getDateAvisClient());
+			ps.setInt(1, ctl.getIdLivre());
 			
-			ps.setString(2, av.getTitreAvisClient());
+			ps.setInt(2, ctl.getIdCategorie());
 			
-			ps.setString(3, av.getCommentaireAvisClient());
-			
-			ps.setInt(4, av.getNoteAvisClient());
-			
-			ps.setInt(5, av.getIdUtilisateur());
-			
-			ps.setInt(6, av.getIdLivre());
+
 		
 
 			int rs = ps.executeUpdate();
 
-			System.out.println("Avis client ajouté : " + rs);
+			System.out.println("Categorie livre ajoutée : " + rs);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -64,6 +58,21 @@ public class AvisClientDao {
 	}
 
 	// -------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

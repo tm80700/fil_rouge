@@ -67,5 +67,74 @@ public class LivreDao {
 	// -------------------------------------------------------------------------------
 	
 	
+	// --------------
+	public Livre rechercheParId(int id) {
+
+		// création de la requete sql qui correspond à la méthode
+		sql = "select * from livre WHERE idLivre = ?;";
+
+		Livre lv = null;
+
+		try {
+
+			// préparation de la request sql pour avoir un sens en java
+			ps = cnx.prepareStatement(sql);
+
+			ps.setInt(1, id);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				lv = new Livre();
+                
+			 	lv.setId_Livre(rs.getInt(1));
+			 	
+				lv.setTitreLivre(rs.getString(2));
+				
+				lv.setAuteurLivre(rs.getString(3));
+				
+				lv.setDescriptionLivre(rs.getString(4));
+				
+				lv.setDatePublicationLivre(rs.getDate(5));
+				
+				lv.setAdressePhotoLivre(rs.getString(6));
+				
+				lv.setNombrePagelivre(rs.getInt(7));
+				
+				lv.setPrixLivre(rs.getFloat(8));
+				
+		
+
+			} else {
+				System.out.println("Aucun livre ne correspond au numero : " + id);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return lv;
+
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
